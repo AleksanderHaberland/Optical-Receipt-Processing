@@ -1,4 +1,21 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ScanReceipt" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1916.3773584905662,2627.320754716981" sap2010:WorkflowViewState.IdRef="ScanReceipt_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/ocr" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ScanReceipt" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/ocr" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Quantity" Type="OutArgument(x:String)" />
+    <x:Property Name="Sale" Type="OutArgument(x:String)" />
+    <x:Property Name="Price" Type="OutArgument(x:String)" />
+    <x:Property Name="NozzelNumber" Type="OutArgument(x:String)" />
+    <x:Property Name="PumpNumber" Type="OutArgument(x:String)" />
+    <x:Property Name="TrxType" Type="OutArgument(x:String)" />
+    <x:Property Name="Time" Type="OutArgument(x:String)" />
+    <x:Property Name="ExtractedDate" Type="OutArgument(x:String)" />
+    <x:Property Name="ExtractedReceiptID" Type="OutArgument(x:String)" />
+    <x:Property Name="ExtractedTrxID" Type="OutArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1620.2264150943395,3173.4339622641505</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ScanReceipt_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -119,13 +136,13 @@
       <AssemblyReference>System.Private.Xml</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ScanReceipt sequence" sap:VirtualizedContainerService.HintSize="691.9245283018868,2562.1132075471696" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ScanReceipt sequence" sap:VirtualizedContainerService.HintSize="743.5471698113207,3108.2264150943392" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ForEachFileX DisplayName="For Each File in Folder" Filter="*.pdf" Folder="D:\DlaPath\Optical-Receipt-Processing\ScannedReceipts" sap:VirtualizedContainerService.HintSize="630.3396226415094,2452.528301886792" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+    <ui:ForEachFileX DisplayName="For Each File in Folder" Filter="*.pdf" Folder="D:\DlaPath\Optical-Receipt-Processing\ScannedReceipts" sap:VirtualizedContainerService.HintSize="681.9622641509434,2998.6415094339623" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
       <ui:ForEachFileX.Body>
         <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
           <ActivityAction.Argument1>
@@ -134,39 +151,29 @@
           <ActivityAction.Argument2>
             <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
           </ActivityAction.Argument2>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="595.9245283018868,2198.0377358490564" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="647.5471698113207,2744.150943396226" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TryCatch DisplayName="Try Script Receipt" sap:VirtualizedContainerService.HintSize="534.3396226415094,2446.188679245283" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch DisplayName="Try Script Receipt" sap:VirtualizedContainerService.HintSize="585.9622641509434,2634.566037735849" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <TryCatch.Try>
-                <Sequence DisplayName="Current receipt sequence" sap:VirtualizedContainerService.HintSize="496.3018867924528,2222.490566037736" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Current receipt sequence" sap:VirtualizedContainerService.HintSize="547.9245283018868,2410.8679245283015" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="PDFText" />
                     <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="EightConsecutiveDigits" />
-                    <Variable x:TypeArguments="x:String" Name="ExtractedReceiptID" />
-                    <Variable x:TypeArguments="x:String" Name="ExtractedTrxID" />
                     <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="ListOfDates" />
-                    <Variable x:TypeArguments="x:String" Name="ExtractedDate" />
                     <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="ListOfTime" />
-                    <Variable x:TypeArguments="x:String" Name="Time" />
-                    <Variable x:TypeArguments="x:String" Name="TrxType" />
                     <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="ExtractedPumpAndNozzel" />
-                    <Variable x:TypeArguments="x:String" Name="PumpNumber" />
-                    <Variable x:TypeArguments="x:String" Name="NozzelNumber" />
                     <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="ExcratedPriceAndSale" />
-                    <Variable x:TypeArguments="x:String" Name="Price" />
-                    <Variable x:TypeArguments="x:String" Name="Sale" />
-                    <Variable x:TypeArguments="x:String" Name="Quantity" />
                   </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:ReadPDFWithOCR DegreeOfParallelism="-1" DisplayName="Read Receipt PDF With OCR" FileName="[Receipt.FullName]" sap:VirtualizedContainerService.HintSize="434.71698113207543,156.67924528301884" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_2" ImageDpi="150" Range="All" Text="[PDFText]">
+                  <ui:ReadPDFWithOCR DegreeOfParallelism="-1" DisplayName="Read Receipt PDF With OCR" FileName="[Receipt.FullName]" sap:VirtualizedContainerService.HintSize="486.3396226415094,156.67924528301884" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_2" ImageDpi="150" Range="All" Text="[PDFText]">
                     <ui:ReadPDFWithOCR.OCREngine>
                       <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
                         <ActivityFunc.Argument>
@@ -176,9 +183,9 @@
                       </ActivityFunc>
                     </ui:ReadPDFWithOCR.OCREngine>
                   </ui:ReadPDFWithOCR>
-                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434.71698113207543,88.75471698113206" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[PDFText]" />
-                  <ui:Matches FirstMatch="{x:Null}" BuilderPattern="(\d{8})" DisplayName="Matches Eight Consecutive Digits" sap:VirtualizedContainerService.HintSize="434.71698113207543,59.77358490566037" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[PDFText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;8&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(\d{8})" RegexOption="IgnoreCase, Compiled" Result="[EightConsecutiveDigits]" />
-                  <Assign DisplayName="Assign Extracted Receipt ID" sap:VirtualizedContainerService.HintSize="434.71698113207543,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="486.3396226415094,88.75471698113206" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[PDFText]" />
+                  <ui:Matches FirstMatch="{x:Null}" BuilderPattern="(\d{8})" DisplayName="Matches Eight Consecutive Digits" sap:VirtualizedContainerService.HintSize="486.3396226415094,59.77358490566037" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[PDFText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;8&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(\d{8})" RegexOption="IgnoreCase, Compiled" Result="[EightConsecutiveDigits]" />
+                  <Assign DisplayName="Assign Extracted Receipt ID" sap:VirtualizedContainerService.HintSize="486.3396226415094,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_1">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[ExtractedReceiptID]</OutArgument>
                     </Assign.To>
@@ -186,7 +193,7 @@
                       <InArgument x:TypeArguments="x:String">[EightConsecutiveDigits.First.ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <Assign DisplayName="Assign Extracted Trx ID" sap:VirtualizedContainerService.HintSize="434.71698113207543,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign DisplayName="Assign Extracted Trx ID" sap:VirtualizedContainerService.HintSize="486.3396226415094,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_2">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[ExtractedTrxID]</OutArgument>
                     </Assign.To>
@@ -194,8 +201,8 @@
                       <InArgument x:TypeArguments="x:String">[EightConsecutiveDigits.Last.ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:Matches FirstMatch="{x:Null}" DisplayName="Matches Date" sap:VirtualizedContainerService.HintSize="434.71698113207543,59.77358490566037" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[PDFText]" IsBuilderTabModified="False" Pattern="(\d{2})\/(\d{2})\/(\d{4})" RegexOption="IgnoreCase, Compiled" Result="[ListOfDates]" />
-                  <Assign DisplayName="Assign Receipt Date" sap:VirtualizedContainerService.HintSize="434.71698113207543,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_3">
+                  <ui:Matches FirstMatch="{x:Null}" DisplayName="Matches Date" sap:VirtualizedContainerService.HintSize="486.3396226415094,59.77358490566037" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[PDFText]" IsBuilderTabModified="False" Pattern="(\d{2})\/(\d{2})\/(\d{4})" RegexOption="IgnoreCase, Compiled" Result="[ListOfDates]" />
+                  <Assign DisplayName="Assign Receipt Date" sap:VirtualizedContainerService.HintSize="486.3396226415094,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_3">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[ExtractedDate]</OutArgument>
                     </Assign.To>
@@ -203,8 +210,8 @@
                       <InArgument x:TypeArguments="x:String">[ListOfDates.First.ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:Matches FirstMatch="{x:Null}" BuilderPattern="(\d+):(\d+)" DisplayName="Matches Issue Time" sap:VirtualizedContainerService.HintSize="434.71698113207543,59.77358490566037" sap2010:WorkflowViewState.IdRef="Matches_4" Input="[PDFText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;+&quot;,&quot;QuantifierID&quot;:&quot;OOM&quot;,&quot;QuantifierName&quot;:&quot;At least one (1 or more)&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:1,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;:&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:2,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;+&quot;,&quot;QuantifierID&quot;:&quot;OOM&quot;,&quot;QuantifierName&quot;:&quot;At least one (1 or more)&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(\d+):(\d+)" RegexOption="IgnoreCase, Compiled" Result="[ListOfTime]" />
-                  <Assign DisplayName="Assign Receipt Date" sap:VirtualizedContainerService.HintSize="434.71698113207543,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_4">
+                  <ui:Matches FirstMatch="{x:Null}" BuilderPattern="(\d+):(\d+)" DisplayName="Matches Issue Time" sap:VirtualizedContainerService.HintSize="486.3396226415094,59.77358490566037" sap2010:WorkflowViewState.IdRef="Matches_4" Input="[PDFText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;+&quot;,&quot;QuantifierID&quot;:&quot;OOM&quot;,&quot;QuantifierName&quot;:&quot;At least one (1 or more)&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:1,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;:&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:2,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;+&quot;,&quot;QuantifierID&quot;:&quot;OOM&quot;,&quot;QuantifierName&quot;:&quot;At least one (1 or more)&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(\d+):(\d+)" RegexOption="IgnoreCase, Compiled" Result="[ListOfTime]" />
+                  <Assign DisplayName="Assign Receipt Date" sap:VirtualizedContainerService.HintSize="486.3396226415094,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_4">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[Time]</OutArgument>
                     </Assign.To>
@@ -212,7 +219,7 @@
                       <InArgument x:TypeArguments="x:String">[ListOfTime.First.ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <Assign DisplayName="Assign Receipt TRX. Type" sap:VirtualizedContainerService.HintSize="434.71698113207543,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_5">
+                  <Assign DisplayName="Assign Receipt TRX. Type" sap:VirtualizedContainerService.HintSize="486.3396226415094,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_5">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[TrxType]</OutArgument>
                     </Assign.To>
@@ -220,8 +227,8 @@
                       <InArgument x:TypeArguments="x:String">VISA</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:Matches FirstMatch="{x:Null}" BuilderPattern="\s(\d)\s" DisplayName="Matches Pump and Nozzel number" sap:VirtualizedContainerService.HintSize="434.71698113207543,59.77358490566037" sap2010:WorkflowViewState.IdRef="Matches_6" Input="[PDFText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;WHITESP&quot;,&quot;OperationName&quot;:&quot;Whitespace&quot;,&quot;OperationValue&quot;:&quot;\\s&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:1,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:2,&quot;OperationID&quot;:&quot;WHITESP&quot;,&quot;OperationName&quot;:&quot;Whitespace&quot;,&quot;OperationValue&quot;:&quot;\\s&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\s(\d)\s" RegexOption="IgnoreCase, Compiled" Result="[ExtractedPumpAndNozzel]" />
-                  <Assign sap:VirtualizedContainerService.HintSize="434.71698113207543,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_6">
+                  <ui:Matches FirstMatch="{x:Null}" BuilderPattern="\s(\d)\s" DisplayName="Matches Pump and Nozzel number" sap:VirtualizedContainerService.HintSize="486.3396226415094,59.77358490566037" sap2010:WorkflowViewState.IdRef="Matches_6" Input="[PDFText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;WHITESP&quot;,&quot;OperationName&quot;:&quot;Whitespace&quot;,&quot;OperationValue&quot;:&quot;\\s&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:1,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:2,&quot;OperationID&quot;:&quot;WHITESP&quot;,&quot;OperationName&quot;:&quot;Whitespace&quot;,&quot;OperationValue&quot;:&quot;\\s&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\s(\d)\s" RegexOption="IgnoreCase, Compiled" Result="[ExtractedPumpAndNozzel]" />
+                  <Assign sap:VirtualizedContainerService.HintSize="486.3396226415094,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_6">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[PumpNumber]</OutArgument>
                     </Assign.To>
@@ -229,7 +236,7 @@
                       <InArgument x:TypeArguments="x:String">[ExtractedPumpAndNozzel.Skip(1).First.ToString.Trim()]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <Assign sap:VirtualizedContainerService.HintSize="434.71698113207543,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_7">
+                  <Assign sap:VirtualizedContainerService.HintSize="486.3396226415094,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_7">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[NozzelNumber]</OutArgument>
                     </Assign.To>
@@ -237,7 +244,7 @@
                       <InArgument x:TypeArguments="x:String">[ExtractedPumpAndNozzel.Last.ToString.Trim()]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:Matches FirstMatch="{x:Null}" BuilderPattern="(\d+)\.(\d{1,2})" DisplayName="Matches Price and Sale" sap:VirtualizedContainerService.HintSize="434.71698113207543,51.62264150943396" sap2010:WorkflowViewState.IdRef="Matches_7" Input="[PDFText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;+&quot;,&quot;QuantifierID&quot;:&quot;OOM&quot;,&quot;QuantifierName&quot;:&quot;At least one (1 or more)&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:1,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;\\.&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:2,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;BXYT&quot;,&quot;QuantifierName&quot;:&quot;Between x and y times&quot;,&quot;QuantifierSecondValue&quot;:&quot;2&quot;}]" Pattern="(\d+)\.(\d{1,2})" RegexOption="IgnoreCase, Compiled" Result="[ExcratedPriceAndSale]">
+                  <ui:Matches FirstMatch="{x:Null}" BuilderPattern="(\d+)\.(\d{1,2})" DisplayName="Matches Price and Sale" sap:VirtualizedContainerService.HintSize="486.3396226415094,51.62264150943396" sap2010:WorkflowViewState.IdRef="Matches_7" Input="[PDFText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;+&quot;,&quot;QuantifierID&quot;:&quot;OOM&quot;,&quot;QuantifierName&quot;:&quot;At least one (1 or more)&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:1,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;\\.&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:2,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;BXYT&quot;,&quot;QuantifierName&quot;:&quot;Between x and y times&quot;,&quot;QuantifierSecondValue&quot;:&quot;2&quot;}]" Pattern="(\d+)\.(\d{1,2})" RegexOption="IgnoreCase, Compiled" Result="[ExcratedPriceAndSale]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -245,7 +252,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:Matches>
-                  <Assign sap:VirtualizedContainerService.HintSize="434.71698113207543,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_8">
+                  <Assign sap:VirtualizedContainerService.HintSize="486.3396226415094,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_8">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[Price]</OutArgument>
                     </Assign.To>
@@ -253,7 +260,7 @@
                       <InArgument x:TypeArguments="x:String">[ExcratedPriceAndSale.First.ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <Assign sap:VirtualizedContainerService.HintSize="434.71698113207543,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_9">
+                  <Assign sap:VirtualizedContainerService.HintSize="486.3396226415094,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_9">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[Sale]</OutArgument>
                     </Assign.To>
@@ -261,7 +268,7 @@
                       <InArgument x:TypeArguments="x:String">[ExcratedPriceAndSale.Last.ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <Assign sap:VirtualizedContainerService.HintSize="434.71698113207543,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_10">
+                  <Assign sap:VirtualizedContainerService.HintSize="486.3396226415094,81.50943396226414" sap2010:WorkflowViewState.IdRef="Assign_10">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[Quantity]</OutArgument>
                     </Assign.To>
@@ -269,18 +276,29 @@
                       <InArgument x:TypeArguments="x:String">[ExcratedPriceAndSale.Skip(1).First.ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434.71698113207543,84.22641509433961" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[Quantity]">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ui:MessageBox>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486.3396226415094,272.60377358490564" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450.1132075471698,193.81132075471697" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="388.5283018867924,84.22641509433961" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[Quantity]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:MessageBox>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                  </ui:CommentOut>
                 </Sequence>
               </TryCatch.Try>
               <TryCatch.Catches>
-                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="499.92452830188677,19.92452830188679" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="551.5471698113207,19.92452830188679" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -291,7 +309,7 @@
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                     </ActivityAction.Argument>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.18867924528297,138.56603773584905" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[exception.Message + &quot;   Error related with looping through files&quot;]" />
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.18867924528297,136.75471698113208" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[exception.Message + &quot;   Error related with looping through files&quot;]" />
                   </ActivityAction>
                 </Catch>
               </TryCatch.Catches>
