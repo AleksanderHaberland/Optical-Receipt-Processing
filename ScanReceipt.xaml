@@ -1,11 +1,12 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="ScanReceipt" this:ScanReceipt.ReceiptData="[new DataTable(&quot;Receipts&quot;)]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/ocr" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd2="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="ReceiptData" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="OutData" Type="OutArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1620.2264150943395,4887.8490566037735</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1620.2264150943395,4819.924528301886</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ScanReceipt_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -134,7 +135,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="ScanReceipt sequence" sap:VirtualizedContainerService.HintSize="743.5471698113207,4822.641509433962" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ScanReceipt sequence" sap:VirtualizedContainerService.HintSize="743.5471698113207,4754.7169811320755" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="ExtractedTrxID" />
       <Variable x:TypeArguments="x:String" Name="ExtractedReceiptID" />
@@ -152,7 +153,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeCode ContinueOnError="{x:Null}" Code="table.Columns.Add(New DataColumn(&quot;Quantity&quot;, GetType(String)))&#xA;table.Columns.Add(New DataColumn(&quot;Sale&quot;, GetType(String)))&#xA;table.Columns.Add(New DataColumn(&quot;Team&quot;, GetType(String)))&#xA;table.Columns.Add(New DataColumn(&quot;Price&quot;, GetType(String)))&#xA;table.Columns.Add(New DataColumn(&quot;NoozelNumber&quot;, GetType(String)))&#xA;table.Columns.Add(New DataColumn(&quot;PumpNumber&quot;, GetType(String)))&#xA;table.Columns.Add(New DataColumn(&quot;TrxType&quot;, GetType(String)))&#xA;table.Columns.Add(New DataColumn(&quot;Time&quot;, GetType(String)))&#xA;table.Columns.Add(New DataColumn(&quot;ExtractedDate&quot;, GetType(String)))&#xA;table.Columns.Add(New DataColumn(&quot;ReceiptID&quot;, GetType(String)))&#xA;table.Columns.Add(New DataColumn(&quot;TrxID&quot;, GetType(String)))&#xA;&#xA;&#xA;&#xA;       &#xA;&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="681.9622641509434,164.83018867924528" sap2010:WorkflowViewState.IdRef="InvokeCode_5">
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="table.Columns.Add(New DataColumn(&quot;Quantity&quot;, GetType(String)))&#xD;&#xA;table.Columns.Add(New DataColumn(&quot;Sale&quot;, GetType(String)))&#xD;&#xA;table.Columns.Add(New DataColumn(&quot;Time&quot;, GetType(String)))&#xD;&#xA;table.Columns.Add(New DataColumn(&quot;Price&quot;, GetType(String)))&#xD;&#xA;table.Columns.Add(New DataColumn(&quot;NoozelNumber&quot;, GetType(String)))&#xD;&#xA;table.Columns.Add(New DataColumn(&quot;PumpNumber&quot;, GetType(String)))&#xD;&#xA;table.Columns.Add(New DataColumn(&quot;TrxType&quot;, GetType(String)))&#xD;&#xA;table.Columns.Add(New DataColumn(&quot;ExtractedDate&quot;, GetType(String)))&#xD;&#xA;table.Columns.Add(New DataColumn(&quot;ReceiptID&quot;, GetType(String)))&#xD;&#xA;table.Columns.Add(New DataColumn(&quot;TrxID&quot;, GetType(String)))&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;       " DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="681.9622641509434,164.83018867924528" sap2010:WorkflowViewState.IdRef="InvokeCode_5">
       <ui:InvokeCode.Arguments>
         <InOutArgument x:TypeArguments="sd:DataTable" x:Key="table">[ReceiptData]</InOutArgument>
       </ui:InvokeCode.Arguments>
@@ -356,59 +357,78 @@
                 </Catch>
               </TryCatch.Catches>
             </TryCatch>
-            <ui:InvokeCode ContinueOnError="{x:Null}" Code="&#xD;&#xA;table.Rows.Add(Quantity, Sale, Price, NozzelNumber, PumpNumber, TrxType, Time, ExtractedDate, ReceiptID, TrxID)&#xD;&#xA;&#xD;&#xA;       &#xD;&#xA;&#xD;&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="585.9622641509434,164.83018867924528" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
+            <ui:InvokeCode ContinueOnError="{x:Null}" Code="table.Rows.Add(Quantity, Sale, Time, Price, NozzelNumber, PumpNumber, TrxType, ExtractedDate, ReceiptID, TrxID)&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="585.9622641509434,164.83018867924528" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
               <ui:InvokeCode.Arguments>
-                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="table">[ReceiptData]</InOutArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="Quantity">[Quantity]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="Sale">[Sale]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="Price">[Price]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="NozzelNumber">[NozzelNumber]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="PumpNumber">[PumpNumber]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="TrxType">[TrxType]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="Time">[Time]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="ExtractedDate">[ExtractedDate]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="ReceiptID">[ExtractedReceiptID]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="TrxID">[ExtractedTrxID]</InArgument>
+                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="table">
+                  <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="ReceiptData" />
+                </InOutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Quantity">
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Quantity" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Sale">
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Sale" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Price">
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Price" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="NozzelNumber">
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="NozzelNumber" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="PumpNumber">
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="PumpNumber" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="TrxType">
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="TrxType" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Time">
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Time" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="ExtractedDate">
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="ExtractedDate" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="ReceiptID">
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="ExtractedReceiptID" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="TrxID">
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="ExtractedTrxID" />
+                </InArgument>
               </ui:InvokeCode.Arguments>
             </ui:InvokeCode>
           </Sequence>
         </ActivityAction>
       </ui:ForEachFileX.Body>
     </ui:ForEachFileX>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="681.9622641509434,539.7735849056603" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="470.9433962264151,460.9811320754717" sap2010:WorkflowViewState.IdRef="Sequence_11">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[ReceiptData]" DisplayName="For Each Row in DataTable Read Receipt Data" sap:VirtualizedContainerService.HintSize="409.3584905660377,351.3962264150943" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
-            <ui:ForEachRow.Body>
-              <ActivityAction x:TypeArguments="sd:DataRow">
-                <ActivityAction.Argument>
-                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
-                </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="374.9433962264151,169.35849056603772" sap2010:WorkflowViewState.IdRef="Sequence_10">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334.18867924528297,83.32075471698113" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[CurrentRow(0).ToString + &quot;  &quot; + CurrentRow(1).ToString + &quot;  &quot; +CurrentRow(2).ToString + &quot;  &quot; + &#xD;&#xA;CurrentRow(3).ToString + &quot;  &quot; +CurrentRow(4).ToString + &quot;  &quot; +CurrentRow(5).ToString + &quot;  &quot; + &#xD;&#xA;CurrentRow(6).ToString + &quot;  &quot; +CurrentRow(7).ToString + &quot;  &quot; +CurrentRow(8).ToString + &quot;  &quot; +CurrentRow(9).ToString]">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ui:MessageBox>
-                </Sequence>
-              </ActivityAction>
-            </ui:ForEachRow.Body>
-          </ui:ForEachRow>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
+    <Assign DisplayName="Assign Collected Data to OutData" sap:VirtualizedContainerService.HintSize="681.9622641509434,80.60377358490565" sap2010:WorkflowViewState.IdRef="Assign_14">
+      <Assign.To>
+        <OutArgument x:TypeArguments="sd:DataTable">[OutData]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="sd:DataTable">[ReceiptData]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[ReceiptData]" DisplayName="For Each Row in DataTable Read Receipt Data" sap:VirtualizedContainerService.HintSize="681.9622641509434,351.3962264150943" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="374.9433962264151,169.35849056603772" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334.18867924528297,83.32075471698113" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[CurrentRow(0).ToString + &quot;  &quot; + CurrentRow(1).ToString + &quot;  &quot; +CurrentRow(2).ToString + &quot;  &quot; + &#xA;CurrentRow(3).ToString + &quot;  &quot; +CurrentRow(4).ToString + &quot;  &quot; +CurrentRow(5).ToString + &quot;  &quot; + &#xA;CurrentRow(6).ToString + &quot;  &quot; +CurrentRow(7).ToString + &quot;  &quot; +CurrentRow(8).ToString + &quot;  &quot; +CurrentRow(9).ToString]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:MessageBox>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
   </Sequence>
 </Activity>
